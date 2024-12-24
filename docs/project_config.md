@@ -24,7 +24,10 @@
 leaderboard-service/
 │
 ├── api/
-│   └── (API实现文件)
+│   ├── routes.py
+│   ├── scheduled_leaderboard_api.py
+│   ├── routes_test.py
+│   └── scheduled_leaderboard_api_test.py
 │
 ├── docs/
 │   └── project_config.md
@@ -32,7 +35,9 @@ leaderboard-service/
 ├── main.py
 ├── config.py
 ├── leaderboard.py
+├── leaderboard_test.py
 ├── storage.py
+├── storage_test.py
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -44,6 +49,21 @@ leaderboard-service/
 2. 使用有意义的变量和函数名称
 3. 添加适当的注释和文档字符串
 4. 保持代码模块化和可重用
+
+## 单元测试
+
+1. 使用pytest框架进行单元测试
+2. 测试文件命名规则：
+   - 对于根目录下的模块，使用`{module}_test.py`命名
+   - 对于api目录下的模块，在api目录中创建相应的`{module}_test.py`文件
+3. 确保单元测试和功能保持同步，每次修改模块时，记得更新或添加相应的单元测试
+4. 运行测试：
+   - 在项目根目录下运行`pytest`命令执行所有测试
+   - 使用`pytest path/to/test_file.py`运行特定的测试文件
+   - 使用`pytest -v`查看详细的测试输出
+5. 使用mock对象模拟外部依赖，如Redis连接
+6. 定期运行测试套件，确保代码变更不会破坏现有功能
+7. 暂时不用对api/*的进行单元测试
 
 ## 版本控制
 

@@ -1,6 +1,6 @@
-import redis
 from config import load_config
 import json
+import redis
 
 _redis_connection = None
 

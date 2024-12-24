@@ -1,0 +1,11 @@
+{
+    "python.testing.pytestArgs": [
+        "-v",
+        "-s",
+        "./",
+        "-o log_cli=true"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.terminal.activateEnvironment": true
+}

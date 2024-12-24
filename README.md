@@ -138,3 +138,49 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 API 文档可以在 `http://localhost:8000/docs` 查看。
 
 注意：确保你的 .env 文件中配置了正确的 API_HOST 和 API_PORT。
+
+## 运行测试
+
+本项目使用pytest进行单元测试。要运行测试，请按照以下步骤操作：
+
+1. 确保你已经安装了所有的依赖，包括测试依赖：
+
+```
+pip install -r requirements.txt
+```
+
+2. 在项目根目录下运行以下命令来执行所有测试：
+
+```
+pytest
+```
+
+这将运行所有的测试文件，包括：
+- leaderboard_test.py
+- storage_test.py
+- api/routes_test.py
+- api/scheduled_leaderboard_api_test.py
+
+3. 如果你想运行特定的测试文件，可以指定文件路径：
+
+```
+pytest path/to/test_file.py
+```
+
+例如，要只运行leaderboard_test.py，可以使用：
+
+```
+pytest leaderboard_test.py
+```
+
+4. 要查看更详细的测试输出，可以添加 -v 参数：
+
+```
+pytest -v
+```
+
+这将显示每个测试用例的结果。
+
+确保在运行测试之前，你的开发环境（如Redis）已经正确设置。某些测试可能需要模拟外部依赖，我们使用了mock对象来处理这些情况。
+
+如果你遇到任何测试失败的情况，请检查错误信息并相应地调试代码。如果你对测试有任何疑问或需要添加新的测试，请参考现有的测试文件作为示例。
