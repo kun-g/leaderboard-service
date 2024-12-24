@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from api import router
+from api import router  # 现在从 api 包中导入 router
 from config import load_config
 
 app = FastAPI(title="排行榜服务", description="高性能、可扩展的通用排名系统")
