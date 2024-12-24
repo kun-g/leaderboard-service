@@ -18,6 +18,11 @@ def load_config():
         },
         "security": {
             "api_key": os.getenv("SECURITY_API_KEY")
+        },
+        "scheduled_leaderboard": {
+            "default_settlement_time": os.getenv("DEFAULT_SETTLEMENT_TIME", "22:00:00"),
+            "default_settlement_cycle": os.getenv("DEFAULT_SETTLEMENT_CYCLE", "daily"),
+            "supported_cycles": ["daily", "weekly", "monthly"]
         }
     }
     return config

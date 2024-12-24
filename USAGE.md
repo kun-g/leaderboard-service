@@ -117,6 +117,29 @@ historical_data = client.get_historical_ranking(
 )
 ```
 
+#### 定时排行榜
+```python
+# 创建定时排行榜
+scheduled_board = client.create_scheduled_leaderboard(
+    name="monthly_tournament",
+    settlement_time="22:00:00",
+    settlement_cycle="monthly"
+)
+
+# 更新定时排行榜分数
+client.update_scheduled_score(
+    leaderboard_id="monthly_tournament",
+    user_id="player123",
+    score=1500
+)
+
+# 手动触发结算
+client.manual_settlement("monthly_tournament")
+
+# 获取定时排行榜历史
+history = client.get_scheduled_leaderboard_history("monthly_tournament")
+```
+
 ## API 接口
 
 ### RESTful API
@@ -147,6 +170,46 @@ Content-Type: application/json
 #### 获取排名
 ```http
 GET /api/v1/leaderboards/{leaderboard_id}/rankings?limit=10
+```
+
+### 定时排行榜 API
+
+#### 创建定时排行榜
+```http
+POST /api/v1/scheduled-leaderboards
+Content-Type: application/json
+
+{
+    "name": "monthly_tournament",
+    "settlement_time": "22:00:00",
+    "settlement_cycle": "monthly"
+}
+```
+
+#### 更新定时排行榜分数
+```http
+POST /api/v1/scheduled-leaderboards/{name}/update-score
+Content-Type: application/json
+
+{
+    "user_id": "player123",
+    "score": 1500
+}
+```
+
+#### 获取定时排行榜状态
+```http
+GET /api/v1/scheduled-leaderboards/{name}/status
+```
+
+#### 手动触发结算
+```http
+POST /api/v1/scheduled-leaderboards/{name}/manual-settlement
+```
+
+#### 获取定时排行榜历史
+```http
+GET /api/v1/scheduled-leaderboards/{name}/history
 ```
 
 ### 批量操作接口
